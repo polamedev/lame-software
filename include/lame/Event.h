@@ -1,5 +1,9 @@
 #pragma once
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #include <stdbool.h>
 
 typedef bool LAME_Event;
@@ -37,3 +41,7 @@ void LAME_Event_Set(LAME_Event *event);
  * @param  event: дескриптор события
  */
 void LAME_Event_Clear(LAME_Event *event);
+
+#ifdef __cplusplus
+}
+#endif
