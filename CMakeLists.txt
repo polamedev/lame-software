@@ -19,8 +19,8 @@ project(
 
 # Опции сборки
 option(Lame_Software_BUILD_TESTS    "Build lame::software tests"         OFF)  # Нужно ли собирать тесты для библиотеки
-option(Lame_Software_BUILD_EXAMPLES "Build lame::software examples"      OFF)  # Нужно ли собирать примеры
-option(Lame_Software_BUILD_DOCS     "Build lame::software documentation" OFF)  # Нужно ли собирать документацию
+# option(Lame_Software_BUILD_EXAMPLES "Build lame::software examples"      OFF)  # Нужно ли собирать примеры
+# option(Lame_Software_BUILD_DOCS     "Build lame::software documentation" OFF)  # Нужно ли собирать документацию
 
 # Установка типа сборки
 if(NOT CMAKE_BUILD_TYPE)
