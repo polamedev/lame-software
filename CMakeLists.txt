@@ -24,7 +24,10 @@ option(Lame_Software_BUILD_TESTS    "Build lame::software tests"         OFF)  #
 
 # Установка типа сборки
 if(NOT CMAKE_BUILD_TYPE)
-    set(CMAKE_BUILD_TYPE "Debug")
+    # Установить переменную CMAKE_BUILD_TYPE и сохранить в кэше
+    set(CMAKE_BUILD_TYPE Release CACHE STRING "Build type")
+    # Устанавливаем для CMAKE_BUILD_TYPE возможные значения, которые можно будет выбрать через cmake-gui
+    set_property(CACHE CMAKE_BUILD_TYPE PROPERTY STRINGS "Debug" "Release" "MinSizeRel" "RelWithDebInfo")
 endif()
 
 
