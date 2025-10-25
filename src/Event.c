@@ -29,4 +29,3 @@ void LAME_Event_Clear(LAME_Event *event)
 {
     *event = false;
 }
-

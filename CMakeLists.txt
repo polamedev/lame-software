@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.22)
+cmake_minimum_required(VERSION 3.21)
 
 # Основные настройки проекта
 project(
@@ -9,9 +9,18 @@ project(
     LANGUAGES C
 )
 
-# set(CMAKE_C_STANDARD 11)
-# set(CMAKE_C_STANDARD_REQUIRED ON)
-# set(CMAKE_C_EXTENSIONS ON)
+# Определяем является ли текущий проектом верхнего уровня. Для fetch проектов, gitsubmodule или просто вложенных проектов это неверно
+# string(COMPARE EQUAL "${CMAKE_SOURCE_DIR}" "${CMAKE_CURRENT_SOURCE_DIR}" is_top_level)
+# Но в новых версиях 3.21 можно использовать ${PROJECT_IS_TOP_LEVEL}
+
+# -----------------------------------------------------------------------------------------------------------------------------------
+# Настройка сборки библиотеки
+# -----------------------------------------------------------------------------------------------------------------------------------
+
+# Опции сборки
+option(Lame_Software_BUILD_TESTS    "Build lame::software tests"         OFF)  # Нужно ли собирать тесты для библиотеки
+option(Lame_Software_BUILD_EXAMPLES "Build lame::software examples"      OFF)  # Нужно ли собирать примеры
+option(Lame_Software_BUILD_DOCS     "Build lame::software documentation" OFF)  # Нужно ли собирать документацию
 
 # Установка типа сборки
 if(NOT CMAKE_BUILD_TYPE)
@@ -20,10 +29,10 @@ endif()
 
 
 # Добавление суфикса в имя дебажной библиотеки, нужно чтобы установить различия в названии. Возможно от этого стоит отказаться
-set(CMAKE_DEBUG_POSTFIX d)
+set(CMAKE_DEBUG_POSTFIX -dev)
 
 
-############## НАСТРОЙКА БИБЛИОТЕКИ ########################
+################### НАСТРОЙКА БИБЛИОТЕКИ ########################
 
 # Добавление библиотеки
 add_library(lame-software)
@@ -39,6 +48,13 @@ set_target_properties(
                SOVERSION ${PROJECT_VERSION_MAJOR}
 )
 
+target_sources(lame-software 
+    PRIVATE 
+    src/Event.c
+    include/lame/Event.h
+)
+
+
 target_include_directories(lame-software
     # Пути включения доступные только библиотеке
     PRIVATE src include/lame
@@ -52,4 +68,3 @@ target_include_directories(lame-software
     $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>
 )
 
-target_sources(lame-software PRIVATE src/Event.c)
