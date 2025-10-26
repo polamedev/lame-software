@@ -8,6 +8,9 @@ find_package(CppUTest REQUIRED)
 # include(CTest)
 enable_testing()
 
-add_executable(EventTest ${CMAKE_CURRENT_SOURCE_DIR}/EventTest.cpp)
+add_executable(EventTest 
+    EventTest.cpp
+    allTests.cpp
+)
 target_link_libraries(EventTest lame::software CppUTest::CppUTest CppUTest::CppUTestExt)
 add_test(EventTest EventTest)

@@ -1,8 +1,6 @@
 #include <lame/Event.h>
 
-#include <CppUTest/CommandLineTestRunner.h>
 #include <CppUTest/TestHarness.h>
-
 
 TEST_GROUP(EventTests) {
 
@@ -55,10 +53,4 @@ TEST(EventTests, checkEventAfterTake)
     LAME_Event_Set(&event);
     LAME_Event_Take(&event);
     CHECK_FALSE(LAME_Event_Check(&event));
-}
-
-int main(int argc, char **argv)
-{
-    printf("\nEvent test");
-    return RUN_ALL_TESTS(argc, argv);
 }
