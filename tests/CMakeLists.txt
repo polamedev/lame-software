@@ -8,9 +8,10 @@ find_package(CppUTest REQUIRED)
 # include(CTest)
 enable_testing()
 
-add_executable(EventTest 
-    EventTest.cpp
+add_executable(lame-software-tests 
     allTests.cpp
+    EventTest.cpp
+    SoftTimerTest.cpp
 )
-target_link_libraries(EventTest lame::software CppUTest::CppUTest CppUTest::CppUTestExt)
-add_test(EventTest EventTest)
+target_link_libraries(lame-software-tests  lame::software CppUTest::CppUTest CppUTest::CppUTestExt)
+add_test(lame-software-tests  lame-software-tests )
