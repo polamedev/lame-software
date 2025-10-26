@@ -56,6 +56,7 @@ set_target_properties(
 target_sources(lame-software 
     PRIVATE 
     src/Event.c
+    src/SoftTimer.c
     include/lame/Event.h
 )
 
